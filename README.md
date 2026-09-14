@@ -29,18 +29,26 @@ Add the input to your flake:
 inputs.responsively-flake.url = "github:Fractal-Tess/responsively-flake";
 ```
 
-Then add the package to Home Manager, passing `inputs` through `extraSpecialArgs`:
+Use the NixOS or Home Manager module:
 
 ```nix
-{ inputs, pkgs, ... }:
+# NixOS
 {
-  home.packages = [
-    inputs.responsively-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
-  ];
+  imports = [ inputs.responsively-flake.nixosModules.default ];
+  programs.responsively.enable = true;
+}
+
+# Home Manager
+{
+  imports = [ inputs.responsively-flake.homeManagerModules.default ];
+  programs.responsively.enable = true;
 }
 ```
 
-For a system-wide install, use `environment.systemPackages` instead.
+The module defaults to the flake's canonical `responsively` package. To select
+a package explicitly, set `programs.responsively.package`, for example
+`inputs.responsively-flake.packages.${pkgs.system}.responsively`.
+
 
 ## MCP
 

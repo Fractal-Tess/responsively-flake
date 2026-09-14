@@ -9,11 +9,20 @@
     };
   };
 
-  outputs = { self, nixpkgs, source }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      source,
+    }:
     let
-      systems = [ "x86_64-linux" "aarch64-linux" ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
-      perSystem = forAllSystems (system:
+      perSystem = forAllSystems (
+        system:
         let
           pkgs = import nixpkgs { inherit system; };
           metadata = builtins.fromJSON (builtins.readFile "${source}/desktop-app/package.json");
@@ -25,7 +34,10 @@
           };
         in
         {
-          packages = { inherit responsively; default = responsively; };
+          packages = {
+            inherit responsively;
+            default = responsively;
+          };
           apps = {
             default = {
               type = "app";
@@ -40,12 +52,17 @@
           };
           checks = { inherit responsively; };
           formatter = pkgs.nixpkgs-fmt;
-        });
+        }
+      );
     in
-    builtins.mapAttrs (name: _: forAllSystems (system: perSystem.${system}.${name})) {
+    (builtins.mapAttrs (name: _: forAllSystems (system: perSystem.${system}.${name})) {
       packages = null;
       apps = null;
       checks = null;
       formatter = null;
+    })
+    // {
+      nixosModules.default = import ./modules/nixos.nix { inherit self; };
+      homeManagerModules.default = import ./modules/home-manager.nix { inherit self; };
     };
 }
