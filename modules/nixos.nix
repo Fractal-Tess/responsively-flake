@@ -1,9 +1,8 @@
 { self }:
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 let
   system = pkgs.stdenv.hostPlatform.system;

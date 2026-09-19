@@ -20,12 +20,12 @@ stdenv.mkDerivation (finalAttrs: {
   buildOfflineCache = fetchYarnDeps {
     name = "responsively-build-deps";
     yarnLock = "${finalAttrs.src}/yarn.lock";
-    hash = "sha256-lJ8P3NShg2g0jIHpVCghsaJmIuJU3laAV6grhY6KqLQ=";
+    hash = "sha256-tIBENtnOP+sAM3oXbMeeTrS3cN+I5q5bYDpb9+1mGl4=";
   };
   runtimeOfflineCache = fetchYarnDeps {
     name = "responsively-runtime-deps";
     yarnLock = "${finalAttrs.src}/release/app/yarn.lock";
-    hash = "sha256-yBxnShPLhjxDNc59g+a3YeHdS/4WWchMCj4ihtSlL/s=";
+    hash = "sha256-7GfC4lHKw0NT8XePWCs6e//OV2S+5iuniJO34hDWM58=";
   };
 
   nativeBuildInputs = [ nodejs yarnConfigHook makeWrapper copyDesktopItems ];

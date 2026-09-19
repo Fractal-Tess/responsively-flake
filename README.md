@@ -73,14 +73,11 @@ Auto-launch requires a graphical session. The app's HTTP MCP endpoint stays on l
 
 ## Update
 
-The locked upstream `main` revision currently reports `2.0.0-beta.0`. In this repository, update and check it with:
+The daily [update workflow](.github/workflows/update.yml) advances the locked upstream source, refreshes changed dependency hashes, and commits only after the package passes its flake check. Run the same process locally with:
 
 ```sh
-nix flake update source
-nix flake check
+./scripts/update.sh
 ```
-
-Dependency changes may require new hashes in [packages/responsively.nix](packages/responsively.nix). Commit and publish, then update the input in your consuming flake.
 
 ## Credits and mirrors
 
