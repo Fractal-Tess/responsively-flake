@@ -20,7 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
   buildOfflineCache = fetchYarnDeps {
     name = "responsively-build-deps";
     yarnLock = "${finalAttrs.src}/yarn.lock";
-    hash = "sha256-tIBENtnOP+sAM3oXbMeeTrS3cN+I5q5bYDpb9+1mGl4=";
+    hash = "sha256-dLpzniub7Lc/jb+5tJQoeaIMh3dijR8VE4/HIxkJo/g=";
   };
   runtimeOfflineCache = fetchYarnDeps {
     name = "responsively-runtime-deps";

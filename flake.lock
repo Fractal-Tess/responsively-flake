@@ -25,11 +25,11 @@
     "source": {
       "flake": false,
       "locked": {
-        "lastModified": 1789812150,
-        "narHash": "sha256-hBm/fwCsd8Km4i6Z1/bYITLsmxgBZ1V7EVpqkSnsYQg=",
+        "lastModified": 1789875299,
+        "narHash": "sha256-BL/ePONmL/BW/xZ+62V/RcTT7jfwAjQWnX+Q5rRzYzA=",
         "owner": "responsively-org",
         "repo": "responsively-app",
-        "rev": "3a90632806be6211a45ee084f6446647c7c07524",
+        "rev": "27ff57eebd8a2e7756b85a4f0225bd3da473ecf7",
         "type": "github"
       },
       "original": {
